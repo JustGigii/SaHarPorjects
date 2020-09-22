@@ -1,0 +1,15 @@
+﻿<Window x:Class="ClientCsharp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientCsharp"
+        mc:Ignorable="d"
+        Title="Project" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="labelHello" Content="Welcome to client" HorizontalAlignment="Left" Margin="234,89,0,0" VerticalAlignment="Top" FontSize="36"/>
+        <Button x:Name="buttonEnterToServer" Content="Submit" HorizontalAlignment="Left" Margin="295,205,0,0" VerticalAlignment="Top" Width="172" Height="59" FontSize="20" Click="buttonEnterToServer_Click"/>
+        <Label x:Name="labelErr" Content="" HorizontalAlignment="Left" Margin="56,314,0,0" VerticalAlignment="Top" FontSize="18" Foreground="#FFF90D0D" />
+
+    </Grid>
+</Window>

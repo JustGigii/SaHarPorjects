@@ -1,0 +1,16 @@
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\ClientCsharp.exe.config
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\ClientCsharp.exe
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\ClientCsharp.pdb
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ClientCsharp.csprojAssemblyReference.cache
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\MainWindow.g.cs
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\App.g.cs
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ClientCsharp_MarkupCompile.cache
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ClientCsharp_MarkupCompile.lref
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\MainWindow.baml
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ClientCsharp.g.resources
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ClientCsharp.Properties.Resources.resources
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ClientCsharp.csproj.GenerateResource.cache
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ClientCsharp.exe
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ClientCsharp.pdb
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\Register.g.cs
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\Register.baml
