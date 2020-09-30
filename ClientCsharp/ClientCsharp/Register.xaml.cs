@@ -14,8 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Web.Script.Serialization;
 using ClientCsharp.App_Code;
-
-
+using System.Threading;
 
 namespace ClientCsharp
 {
@@ -90,9 +89,12 @@ namespace ClientCsharp
                 }
                 else
                 {
+                    errormessage.Text = "";
                     UserDetails User = new UserDetails(0, textBoxFirstName.Text, textBoxLastName.Text, textBoxUserName.Text, textBoxEmail.Text, passwordBox1.Password, 0);
                     var json = new JavaScriptSerializer().Serialize(User);
-                   
+                    server.Send("register");
+                    Thread.Sleep(100);
+                    server.Send(json);
                     
                 }
             }

@@ -1,9 +1,8 @@
 package com.company;
-import java.io.BufferedInputStream;
-import java.io.DataInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.Socket;
-
 
 
 public class Iclient implements Runnable {
@@ -15,7 +14,7 @@ public class Iclient implements Runnable {
         this.serverInteface= serverInteface;
         this.clientSocket=clientSocket;
         isruning = true;
-        Thread Reader = new Thread(this);
+        Thread Reader = new Thread(this,"MessageThread");
         Reader.start();
     }
     @Override
@@ -23,8 +22,16 @@ public class Iclient implements Runnable {
         while (this.isruning)
         {
             try {
-                DataInputStream in =new DataInputStream(new BufferedInputStream (clientSocket.getInputStream()));
-                System.out.println(in.readUTF());
+                BufferedReader  recv = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                String[] split = recv.readLine().split("@",2);
+                String Command= split[0];
+                String Massage = split[1];
+                switch (Command)
+                {
+                    case "register":
+                        serverInteface.AddNewUser(Massage);
+                        break;
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
