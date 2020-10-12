@@ -14,3 +14,8 @@ C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\
 C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ClientCsharp.pdb
 C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\Register.g.cs
 C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\Register.baml
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\Login.g.cs
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\Newtonsoft.Json.dll
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\Newtonsoft.Json.xml
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\Login.baml
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ClientCsharp.csproj.CopyComplete

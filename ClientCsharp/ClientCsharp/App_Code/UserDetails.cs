@@ -16,17 +16,20 @@ namespace ClientCsharp.App_Code
         private string password;
         private int mode;
 
-
+        public UserDetails()
+        {
+        }
         public UserDetails(int id, string fname, string lname, string userName, string mail, string password, int mode)
         {
             this.id = id;
             this.fname = fname;
             this.lname = lname;
-            this.UserName = userName;
-            this.Mail = mail;
-            this.Password = password;
-            this.Mode = mode;
+            this.userName = userName;
+            this.mail = mail;
+            this.password = password;
+            this.mode = mode;
         }
+
         public int Id
         {
             get { return this.id; }

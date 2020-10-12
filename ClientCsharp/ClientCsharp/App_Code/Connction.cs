@@ -53,8 +53,8 @@ namespace ClientCsharp.App_Code
             {
                 // read xml from server
                 byte[] buf;
-                buf = new byte[100];
-                stream.Read(buf, 0, 100);
+                buf = new byte[10000];
+                stream.Read(buf, 0, 10000);
                 return Encoding.UTF8.GetString(buf);
             }
             catch (Exception)

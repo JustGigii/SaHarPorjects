@@ -32,9 +32,9 @@ namespace ClientCsharp
         }
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            //Login login = new Login();
-            //login.Show();
-            //Close();
+            Login login = new Login(server);
+            login.Show();
+            Close();
         }
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
@@ -92,10 +92,10 @@ namespace ClientCsharp
                     errormessage.Text = "";
                     UserDetails User = new UserDetails(0, textBoxFirstName.Text, textBoxLastName.Text, textBoxUserName.Text, textBoxEmail.Text, passwordBox1.Password, 0);
                     var json = new JavaScriptSerializer().Serialize(User);
-                    server.Send("register");
-                    Thread.Sleep(100);
-                    server.Send(json);
-                    
+                    server.Send("register@"+json+"\n");
+                    string[] answer = server.Recv().Split('&');
+                    errormessage.Text = answer[0];
+                    User.Id = int.Parse(answer[1]);
                 }
             }
         }

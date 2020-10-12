@@ -33,8 +33,8 @@ namespace ClientCsharp
             {
                 Connction connction = new Connction("127.0.0.1", 2212);
                 labelErr.Content = "succes";
-                Register Reg = new Register(connction);
-                Reg.Show();
+                Login log = new Login(connction);
+                log.Show();
                 this.Close();
             }
             catch (Exception err)

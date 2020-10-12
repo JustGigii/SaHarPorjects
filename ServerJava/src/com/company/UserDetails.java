@@ -1,78 +1,82 @@
 package com.company;
 
 public class UserDetails {
-    private int id;
-    private String fname;
-    private String lname;
-    private String userName;
-    private String mail;
-    private String password;
-    private int mode;
+    private int Id;
+    private String Fname;
+    private String Lname;
+    private String UserName;
+    private String Mail;
+    private String Password;
+    private int Mode;
 
+    public UserDetails( int Id,String Fname, String Lname, String UserName,String Mail, String Password,int Mode)
+    {
+        this.setId(Id);
+        this.setFname(Fname);
+        this.setLname(Lname);
+        this.setUserName(UserName);
+        this.setMail(Mail);
+        this.setPassword(Password);
+        this.setMode(Mode);
+    }
 
-    public UserDetails(int id, String fname, String lname, String userName, String mail, String password, int mode) {
-        this.id = id;
-        this.fname = fname;
-        this.lname = lname;
-        this.userName = userName;
-        this.mail = mail;
-        this.password = password;
-        this.mode = mode;
+    // Getter Methods
+
+    public int getId() {
+        return Id;
     }
 
     public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
+        return Fname;
     }
 
     public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
+        return Lname;
     }
 
     public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+        return UserName;
     }
 
     public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
+        return Mail;
     }
 
     public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+        return Password;
     }
 
     public int getMode() {
-        return mode;
+        return Mode;
     }
 
-    public void setMode(int mode) {
-        this.mode = mode;
+    // Setter Methods
+
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
-    public int getId() {
-        return id;
+    public void setFname(String Fname) {
+        this.Fname = Fname;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setLname(String Lname) {
+        this.Lname = Lname;
+    }
+
+    public void setUserName(String UserName) {
+        this.UserName = UserName;
+    }
+
+    public void setMail(String Mail) {
+        this.Mail = Mail;
+    }
+
+    public void setPassword(String Password) {
+        this.Password = Password;
+    }
+
+    public void setMode(int Mode) {
+        this.Mode = Mode;
     }
 }
