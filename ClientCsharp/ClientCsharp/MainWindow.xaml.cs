@@ -31,6 +31,7 @@ namespace ClientCsharp
         {
             try
             {
+               
                 Connction connction = new Connction("127.0.0.1", 2212);
                 labelErr.Content = "succes";
                 Login log = new Login(connction);

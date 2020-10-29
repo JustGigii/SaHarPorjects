@@ -19,3 +19,11 @@ C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\
 C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\Newtonsoft.Json.xml
 C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\Login.baml
 C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ClientCsharp.csproj.CopyComplete
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\MaterialDesignColors.dll
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\MaterialDesignColors.pdb
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ChatInterFace.g.cs
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\App.baml
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ChatInterFace.baml

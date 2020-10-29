@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClientCsharp.App_Code
 {
-    class UserDetails
+    public class UserDetails
     {
         private int id;
         private string fname;

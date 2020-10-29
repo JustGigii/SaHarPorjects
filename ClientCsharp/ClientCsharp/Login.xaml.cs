@@ -24,16 +24,17 @@ namespace ClientCsharp
     public partial class Login : Window
     {
         private const string Pattern = @"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$";
-        Connction Con;
-        UserDetails User;
-        public Login(Connction Con)
+        Connction con;
+        UserDetails user;
+        public Login(Connction con)
         {
             InitializeComponent();
-            this.Con = Con;
+            this.con = con;
         }
         
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            errormessage.Text = "";
             if (textBoxEmail.Text.Length == 0)
             {
                 errormessage.Text = "Enter an email.";
@@ -49,14 +50,16 @@ namespace ClientCsharp
             {
                 string email = textBoxEmail.Text;
                 string password = passwordBox1.Password;
-                Con.Send("login@" + email + " " + password);
-                string[] aswer = Con.Recv().Split('&');
+                con.Send("login@" + email + " " + password);
+                string[] aswer = con.Recv().Split('&');
                 
                 if (aswer[1] != "None")
                 {
                     string json = aswer[1].Substring(0, int.Parse(aswer[0]));
-                    User = new JavaScriptSerializer().Deserialize<UserDetails>(json);
-                    errormessage.Text = json;
+                    user = new JavaScriptSerializer().Deserialize<UserDetails>(json);
+                    ChatInterFace chat = new ChatInterFace(con,user);
+                    chat.Show();
+                    this.Close();
                 }
                 else
                 {
@@ -67,7 +70,7 @@ namespace ClientCsharp
         }
         private void buttonRegister_Click(object sender, RoutedEventArgs e)
         {
-            Register Reg = new Register(Con);
+            Register Reg = new Register(con);
             Reg.Show();
             Close();
         }

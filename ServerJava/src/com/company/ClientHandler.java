@@ -9,7 +9,6 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 
-
 public class ClientHandler implements Runnable {
     private IServerCommands serverInteface;
     private Socket clientSocket;
@@ -41,15 +40,29 @@ public class ClientHandler implements Runnable {
 
         }
     }
-    private void CommandHandler(String Command,String Massage)
+    private void CommandHandler(String command,String massage)
     {
-        switch (Command)
+        String sacana;
+        switch (command)
         {
+            case "showchat":
+                String[] ids = massage.split(",");
+                sacana = serverInteface.SendPopChat(Integer.parseInt(ids[0]),Integer.parseInt(ids[1]));
+                System.out.printf(sacana);
+                send.println(sacana);
+                break;
+            case "Boardcast":
+                    serverInteface.SendBoardCast(massage);
+                break;
+            case "GetAllUser":
+                 sacana = serverInteface.GetAllUser();
+                send.println(sacana);
+                break;
             case "register":
-                send.println(serverInteface.Register(Massage));
+                send.println(serverInteface.Register(massage,this));
                 break;
             case "login":
-             UserDetails User = serverInteface.Login(Massage);
+             UserDetails User = serverInteface.Login(massage,this);
              if(User != null) {
                  Gson gson = new Gson();
                  String tosend=gson.toJson(User);
@@ -59,5 +72,9 @@ public class ClientHandler implements Runnable {
                  send.println("we can't find your user");
 
         }
+    }
+    public void SendBoardcast(String message)
+    {
+        send.println(message);
     }
 }

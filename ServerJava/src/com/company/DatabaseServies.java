@@ -1,31 +1,29 @@
 package com.company;
 
-
-
 import java.sql.*;
 
 class DatabaseServies {
-    String Url;
-    String UserName;
-    String Password;
+     private static String Url="jdbc:oracle:thin:@localhost:1521:XE";
+    private static String UserName="MultyGigson";
+    private static String Password="2w2w2w147";
+    private  static Connection con = null;
 
-    public DatabaseServies() {
 
-    }
-
-    private Connection GetConnection() {
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "MultyGigson", "2w2w2w147");
-        } catch (SQLException | ClassNotFoundException throwables) {
-            throwables.printStackTrace();
+    private static Connection GetConnection() {
+        synchronized (Class.class) {
+            if(con == null)
+            try {
+                Class.forName("oracle.jdbc.driver.OracleDriver");
+                con = DriverManager.getConnection(Url, UserName, Password);
+            } catch (SQLException | ClassNotFoundException throwables) {
+                throwables.printStackTrace();
+            }
+            return con;
         }
-        return null;
     }
-
-    public int AddUserToDatabase(UserDetails user) {
+    public static int AddUserToDatabase(UserDetails user) {
         try {
-            Connection con = GetConnection();
+             con = GetConnection();
             CallableStatement pst = con.prepareCall("{? = call AddNewUser(?,?,?,?,?,?)}");
             //Registering the out parameter of the function (return type)
 
@@ -38,18 +36,18 @@ class DatabaseServies {
             pst.setString(6, user.getPassword());
             pst.setInt(7, user.getMode());
             pst.execute();
-            con.close();    //closing connection
             user.setId(pst.getInt(1));
             return user.getId();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            return -3;
         }
-        return -3;
+
     }
-    public UserDetails FindUser(String username, String password) {
+    public static UserDetails FindUser(String username, String password) {
         UserDetails user = null;
-        Connection con = GetConnection();
+         con = GetConnection();
         try {
             PreparedStatement  statement =con.prepareStatement("select * from users Where (MAIL=? or USERNAME_NAME = ?) and PASSWORD= ? ");   //executing statement
             statement.setString(1, username);
@@ -59,12 +57,41 @@ class DatabaseServies {
             while(rs.next()){
                  user = new UserDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7));
             }
-
         }
         catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
         return user;
     }
+    public static ResultSet DsGetAllUser()
+    {
+        try {
+         con = GetConnection();
+        Statement statement = con.createStatement();
+        ResultSet results = statement.executeQuery("SELECT USERNAME_NAME,USER_ID FROM USERS");
+            return results;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return  null;
+        }
+    }
+    public static ResultSet PopChat(int user1,int user2)
+    {
+        try {
+            con = GetConnection();
+            PreparedStatement statement = con.prepareStatement("SELECT TRANSFROMMASSAGE.USERIDSEND,MASSGES.TEXT,MASSGES.SEND_IN,TRANSFROMMASSAGE.STATUS FROM MASSGES INNER JOIN TRANSFROMMASSAGE ON MASSGES.MESSGE_ID= TRANSFROMMASSAGE.USERIDSEND WHERE TRANSFROMMASSAGE.USERIDSEND=? or TRANSFROMMASSAGE.USERIDSEND=?");
+            statement.setInt(1, user1);
+            statement.setInt(2, user2);
+            ResultSet results = statement.executeQuery();
+            return results;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return  null;
+        }
+    }
+
 }
 
