@@ -33,7 +33,8 @@ public class ClientHandler implements Runnable {
                  send = new PrintWriter(clientSocket.getOutputStream(), true);
                 String[] split = recv.readLine().split("@",2);
                 CommandHandler(split[0],split[1]);
-            } catch (IOException e) {
+                Thread.sleep(10);
+            } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
                 isruning =false;
             }
@@ -45,18 +46,21 @@ public class ClientHandler implements Runnable {
         String sacana;
         switch (command)
         {
+            case "AddMessage":
+                send.println("AddMessage¨"+serverInteface.AddMessage(massage));
+                break;
             case "showchat":
                 String[] ids = massage.split(",");
                 sacana = serverInteface.SendPopChat(Integer.parseInt(ids[0]),Integer.parseInt(ids[1]));
                 System.out.printf(sacana);
-                send.println(sacana);
+                send.println("showchat¨"+sacana);
                 break;
             case "Boardcast":
                     serverInteface.SendBoardCast(massage);
                 break;
             case "GetAllUser":
-                 sacana = serverInteface.GetAllUser();
-                send.println(sacana);
+                 sacana = serverInteface.GetAllUser(Integer.parseInt(massage));
+                send.println("GetAllUser¨"+sacana);
                 break;
             case "register":
                 send.println(serverInteface.Register(massage,this));
@@ -70,11 +74,11 @@ public class ClientHandler implements Runnable {
              }
              else
                  send.println("we can't find your user");
-
+             break;
         }
     }
     public void SendBoardcast(String message)
     {
-        send.println(message);
+        send.println("Boardcast¨"+message);
     }
 }

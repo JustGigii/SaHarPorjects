@@ -81,9 +81,9 @@ public class Server implements Runnable,IServerCommands{
             users.add(clinent);
             return user;
         }
-        public String GetAllUser()
+        public String GetAllUser(int userid)
         {
-                ResultSet rs = DatabaseServies.DsGetAllUser();
+                ResultSet rs = DatabaseServies.DsGetAllUser(userid);
             try {
                 JSONArray jsonArray = convertToJSON(rs);
                 JSONObject jsonObject = new JSONObject();
@@ -111,6 +111,21 @@ public class Server implements Runnable,IServerCommands{
         }
     }
 
+    @Override
+    public String AddMessage(String messagejson) {
+        String retuensrting = "";
+
+        Gson gson = new Gson();
+        MessageDetails newmessage = gson.fromJson(messagejson,MessageDetails.class);
+        if(DatabaseServies.AddMessage(newmessage)>0)
+        {
+                retuensrting = "Succes&"+newmessage.getMassageid();
+        }
+        else
+            retuensrting = "we have some erro in our server try back later";
+        return  retuensrting;
+    }
+
     public void SendBoardCast(String message)
     {
         for (int i = 0; i < users.size(); i++) {
@@ -119,7 +134,7 @@ public class Server implements Runnable,IServerCommands{
         }
     }
 
-    private   JSONArray convertToJSON(ResultSet resultSet)
+    private JSONArray convertToJSON(ResultSet resultSet)
             throws Exception {
         JSONArray jsonArray = new JSONArray();
         while (resultSet.next()) {

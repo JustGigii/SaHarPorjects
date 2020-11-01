@@ -1,6 +1,8 @@
 package com.company;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 class DatabaseServies {
      private static String Url="jdbc:oracle:thin:@localhost:1521:XE";
@@ -43,7 +45,28 @@ class DatabaseServies {
             throwables.printStackTrace();
             return -3;
         }
+    }
+    public static int AddMessage(MessageDetails message) {
+        try {
+            con = GetConnection();
+            CallableStatement pst = con.prepareCall("{? = call AddMessage(?,?,?,?,?)}");
+            //Registering the out parameter of the function (return type)
 
+            //Executing the statement
+            pst.registerOutParameter(1,Types.INTEGER);
+            pst.setString(2, message.getText());
+            pst.setDate(3,  new java.sql.Date(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(message.getDate()).getTime()));
+            pst.setInt(4,message.getUseridsend());
+            pst.setInt(5,message.getUseridrecv());
+            pst.setInt(6, message.getStatus());
+            pst.execute();
+            message.setMassage(pst.getInt(1));
+            return message.getMassageid();
+
+        } catch (SQLException | ParseException throwables) {
+            throwables.printStackTrace();
+            return -1;
+        }
     }
     public static UserDetails FindUser(String username, String password) {
         UserDetails user = null;
@@ -64,12 +87,13 @@ class DatabaseServies {
 
         return user;
     }
-    public static ResultSet DsGetAllUser()
+    public static ResultSet DsGetAllUser(int userid)
     {
         try {
          con = GetConnection();
-        Statement statement = con.createStatement();
-        ResultSet results = statement.executeQuery("SELECT USERNAME_NAME,USER_ID FROM USERS");
+         PreparedStatement statement = con.prepareStatement("SELECT USERNAME_NAME,USER_ID FROM USERS Where USER_ID != ?");
+            statement.setInt(1, userid);
+        ResultSet results = statement.executeQuery();
             return results;
         }
         catch (SQLException e) {
@@ -81,9 +105,11 @@ class DatabaseServies {
     {
         try {
             con = GetConnection();
-            PreparedStatement statement = con.prepareStatement("SELECT TRANSFROMMASSAGE.USERIDSEND,MASSGES.TEXT,MASSGES.SEND_IN,TRANSFROMMASSAGE.STATUS FROM MASSGES INNER JOIN TRANSFROMMASSAGE ON MASSGES.MESSGE_ID= TRANSFROMMASSAGE.USERIDSEND WHERE TRANSFROMMASSAGE.USERIDSEND=? or TRANSFROMMASSAGE.USERIDSEND=?");
+            PreparedStatement statement = con.prepareStatement("SELECT TRANSFROMMASSAGE.USERIDSEND,MASSGES.TEXT,MASSGES.SEND_IN,TRANSFROMMASSAGE.STATUS FROM MASSGES INNER JOIN TRANSFROMMASSAGE ON MASSGES.MESSGE_ID= TRANSFROMMASSAGE.MASSAGE_ID WHERE (TRANSFROMMASSAGE.USERIDSEND=? and TRANSFROMMASSAGE.USERIDRECV=?) or (TRANSFROMMASSAGE.USERIDSEND=? and TRANSFROMMASSAGE.USERIDRECV=?)");
             statement.setInt(1, user1);
             statement.setInt(2, user2);
+            statement.setInt(3, user2);
+            statement.setInt(4, user1);
             ResultSet results = statement.executeQuery();
             return results;
         }

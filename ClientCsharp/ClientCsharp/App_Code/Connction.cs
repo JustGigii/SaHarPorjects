@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
+using System.Threading;
 
 namespace ClientCsharp.App_Code
 {
@@ -63,6 +64,7 @@ namespace ClientCsharp.App_Code
                 throw;
             }
         }
+       
         public void Close()
         {
             try

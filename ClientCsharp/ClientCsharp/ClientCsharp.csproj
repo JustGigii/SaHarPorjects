@@ -67,7 +67,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="App_Code\MessageDetail.cs" />
     <Compile Include="App_Code\UserDetails.cs" />
+    <Compile Include="BoardcastView.xaml.cs">
+      <DependentUpon>BoardcastView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChatInterFace.xaml.cs">
       <DependentUpon>ChatInterFace.xaml</DependentUpon>
     </Compile>
@@ -77,6 +81,10 @@
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Page Include="BoardcastView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChatInterFace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -27,3 +27,5 @@ C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\
 C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ChatInterFace.g.cs
 C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\App.baml
 C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ChatInterFace.baml
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\BoardcastView.g.cs
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\BoardcastView.baml
