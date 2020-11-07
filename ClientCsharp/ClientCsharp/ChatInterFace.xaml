@@ -6,21 +6,24 @@
         xmlns:local="clr-namespace:ClientCsharp"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="ClientCsharp.ChatInterFace"
         mc:Ignorable="d"
-        Title="Chat" Height="519" Width="345.5">
+        Title="Chat" Height="514" Width="353.5" ResizeMode="NoResize">
     <StackPanel>
         <StackPanel >
             <ComboBox x:Name="comboBoxUser" VerticalAlignment="Stretch"  Background="#FF37C30E" FontSize="10" SelectionChanged="comboBoxUser_SelectionChanged"/>
         </StackPanel>
         <StackPanel>
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,-3,0" >
-                <StackPanel Background="AliceBlue" Name="ViewContainer" Height="423" Width="345" >
+            <ScrollViewer  VerticalScrollBarVisibility = "Auto" Height="400" >
+                <StackPanel Background="AliceBlue" Name="ViewContainer">
                 </StackPanel>
             </ScrollViewer>
         </StackPanel>
+        <Label x:Name="labelerr" Content=""/>
         <StackPanel Orientation="Horizontal">
-            <TextBox  VerticalScrollBarVisibility="Auto" x:Name="textBoxChat" HorizontalAlignment="Left"   TextWrapping="Wrap" Text="" Height="39" Background="#FFB8B4B4" FontSize="24" Width="274" VerticalAlignment="Top"/>
+            <TextBox  VerticalScrollBarVisibility="Auto" x:Name="textBoxChat" HorizontalAlignment="Left"   TextWrapping="Wrap" Text="" Height="37" Background="#FFB8B4B4" FontSize="24" Width="221" VerticalAlignment="Top"/>
             <Button x:Name="buttonSend"  Content="Send" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="buttonSend_Click" Height="39"/>
+            <Button x:Name="buttonUplod"  Content="uplod" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="39" Click="buttonUplod_Click"/>
         </StackPanel>
+        
     </StackPanel>
 
 </Window>

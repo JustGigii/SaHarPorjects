@@ -29,3 +29,11 @@ C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\
 C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\ChatInterFace.baml
 C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\BoardcastView.g.cs
 C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\obj\Debug\BoardcastView.baml
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\Firebase.Storage.dll
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\FireSharp.dll
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\FireSharp.Serialization.JsonNet.dll
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\RestSharp.dll
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\RestSharp.xml
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\omrig\Desktop\SaHarPorjects-master\ClientCsharp\ClientCsharp\bin\Debug\Firebase.Auth.dll

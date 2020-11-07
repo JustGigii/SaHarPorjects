@@ -16,6 +16,11 @@ using ClientCsharp.App_Code;
 using System.Data;
 using Newtonsoft.Json;
 using System.Web.Script.Serialization;
+using Microsoft.Win32;
+using System.IO;
+using Firebase.Storage;
+using Firebase.Auth;
+using System.Threading;
 
 namespace ClientCsharp 
 {
@@ -29,6 +34,7 @@ namespace ClientCsharp
         BoardcastView boardcastView;
         public ChatInterFace(Connction server, UserDetails user)
         {
+          
             InitializeComponent();
             this.server = server;
             this.user = user;
@@ -36,7 +42,10 @@ namespace ClientCsharp
             boardcastView.Show();
             server.Send("GetAllUser@"+user.Id);
             PopUser();
-           
+            StorageConfig storage = new StorageConfig("1", "!", "1", "1", "1");
+            string storagemess = new JavaScriptSerializer().Serialize(storage);
+
+
         }
       
         void PopUser()
@@ -59,35 +68,57 @@ namespace ClientCsharp
         private void buttonSend_Click(object sender, RoutedEventArgs e)
         {
             string message = textBoxChat.Text;
-            ShowNewMessage(message,true,DateTime.Now.ToString());
+            message = "m^" + message;
+            ShowNewMessage(message, true, DateTime.Now.ToString());
+            UpdateDS(message);
+
+        }
+
+        private void UpdateDS(string message)
+        {
             var messageDetail = new MessageDetail(user.Id, int.Parse(comboBoxUser.SelectedValue.ToString()), 1, message, DateTime.Now.ToString());
             var json = new JavaScriptSerializer().Serialize(messageDetail);
             server.Send("AddMessage@" + json + "\n");
             string[] answer = boardcastView.Recv().Split('&');
             messageDetail.Massageid = int.Parse(answer[1]);
-
         }
-
 
         public void ShowNewMessage(string message, bool isyou,string time)
         {
             textBoxChat.Clear();
-            DockPanel dock = new DockPanel(); 
-            TextBlock textBlock = new TextBlock(new Run(message));
-            textBlock.FontSize = 20;
-            if (isyou)
+            DockPanel dock = new DockPanel();
+            string[] messagesplit = message.Split('^');
+            if (messagesplit[0] == "m")
             {
-                textBlock.TextAlignment = TextAlignment.Right;
-                 textBlock.Background = Brushes.Cyan;
+                TextBlock textBlock = new TextBlock(new Run(messagesplit[1]));
+                textBlock.FontSize = 20;
+                if (isyou)
+                {
+                    textBlock.TextAlignment = TextAlignment.Right;
+                    textBlock.Background = Brushes.Cyan;
+                }
+                else
+                {
+                    textBlock.Background = Brushes.White;
+                    textBlock.TextAlignment = TextAlignment.Left;
+                }
+                dock.Children.Add(textBlock);
             }
             else
             {
-                textBlock.Background = Brushes.White;
-                textBlock.TextAlignment = TextAlignment.Left;
+                Image image = new Image();
+                image.Width = 200;
+                image.Height = 200;
+                HorizontalAlignment = HorizontalAlignment.Left;
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(messagesplit[1], UriKind.Absolute);
+                bitmap.EndInit();
+                image.Source = bitmap;
+                dock.Children.Add(image);
             }
             Label labeltime = new Label();
             labeltime.Content = time;
-            dock.Children.Add(textBlock);
             dock.Children.Add(labeltime);
             ViewContainer.Children.Add(dock);
         }
@@ -98,5 +129,60 @@ namespace ClientCsharp
             server.Send("showchat@" + user.Id + "," + comboBoxUser.SelectedValue);
             PopChat();
         }
+
+        private async void buttonUplod_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            server.Send("GetConfig@Storage");
+             StorageConfig config = JsonConvert.DeserializeObject<StorageConfig>(boardcastView.Recv()); ;
+            if (openFileDialog.ShowDialog() == true)
+            {
+                var stream = File.Open(System.IO.Path.GetFullPath(openFileDialog.FileName), FileMode.Open);
+                var auth = new FirebaseAuthProvider(new FirebaseConfig(config.Apikey));
+                var a = await auth.SignInWithEmailAndPasswordAsync(config.Username, config.Password);
+
+                var cancellation = new CancellationTokenSource();
+                var task = new FirebaseStorage(
+                    config.Storage,
+                    new FirebaseStorageOptions
+                    {
+                        AuthTokenAsyncFactory = () => Task.FromResult(a.FirebaseToken),
+                        ThrowOnCancel = true // when you cancel the upload, exception is thrown. By default no exception is thrown
+            })
+                    .Child(config.File)
+                    .Child(RandomName()+".png")
+                    .PutAsync(stream, cancellation.Token);
+                task.Progress.ProgressChanged += (s,f) => labelerr.Content =$"Progress: {f.Percentage} %";
+                try
+                {
+                    // error during upload will be thrown when you await the task
+                    string url = await task;
+                    url = "i^" + url;
+                    UpdateDS(url);
+                    ShowNewMessage(url, true, DateTime.Now.ToString());
+  
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        private string RandomName()
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[6];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            return new String(stringChars);
+        }
+
+
     }
 }

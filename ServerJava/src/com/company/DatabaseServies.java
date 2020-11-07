@@ -78,7 +78,7 @@ class DatabaseServies {
             statement.setString(3, password);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-                 user = new UserDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7));
+                     user = new UserDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7));
             }
         }
         catch (SQLException throwables) {

@@ -46,13 +46,19 @@ public class ClientHandler implements Runnable {
         String sacana;
         switch (command)
         {
+            case "GetConfig":
+                if (massage.equals("Storage"))
+                {
+                   send.println( "GetConfig¨"+serverInteface.StorageConfig());
+                }
+                break;
             case "AddMessage":
                 send.println("AddMessage¨"+serverInteface.AddMessage(massage));
                 break;
             case "showchat":
                 String[] ids = massage.split(",");
                 sacana = serverInteface.SendPopChat(Integer.parseInt(ids[0]),Integer.parseInt(ids[1]));
-                System.out.printf(sacana);
+                //System.out.printf(sacana);
                 send.println("showchat¨"+sacana);
                 break;
             case "Boardcast":

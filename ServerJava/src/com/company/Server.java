@@ -17,11 +17,13 @@ public class Server implements Runnable,IServerCommands{
     private int port;
     private boolean tryToAccsept;
     private List<ClientHandler> users;
+    StorageConfig storage;
     public  Server()
     {
         tryToAccsept= true;
         try {
             users = new ArrayList<>();
+             storage = new StorageConfig();
             //UserDetails user = new UserDetails(0,"f","f","f","gigiomri@gmail.com","2w2w2w147",0);
            // users.put(usersCount,user);
             //usersCount++;
@@ -132,6 +134,12 @@ public class Server implements Runnable,IServerCommands{
             ClientHandler client = users.get(i);
             client.SendBoardcast(message);
         }
+    }
+
+    @Override
+    public String StorageConfig() {
+        Gson gson = new Gson();
+        return gson.toJson(storage);
     }
 
     private JSONArray convertToJSON(ResultSet resultSet)

@@ -6,5 +6,6 @@ public interface IServerCommands {
     public String GetAllUser(int userid);
     public String SendPopChat(int userid1 , int userid2);
     public String AddMessage(String message);
-    public void  SendBoardCast(String messagejson);
+    public void SendBoardCast(String messagejson);
+    public String StorageConfig();
 }
