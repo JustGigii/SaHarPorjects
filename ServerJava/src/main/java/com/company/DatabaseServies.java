@@ -26,7 +26,7 @@ class DatabaseServies {
     public static int AddUserToDatabase(UserDetails user) {
         try {
              con = GetConnection();
-            CallableStatement pst = con.prepareCall("{? = call AddNewUser(?,?,?,?,?,?)}");
+            CallableStatement pst = con.prepareCall("{? = call AddNewUser(?,?,?,?,?,?,?)}");
             //Registering the out parameter of the function (return type)
 
             //Executing the statement
@@ -37,6 +37,7 @@ class DatabaseServies {
             pst.setString(5, user.getMail());
             pst.setString(6, user.getPassword());
             pst.setInt(7, user.getMode());
+            pst.setString(8, user.getPicture());
             pst.execute();
             user.setId(pst.getInt(1));
             return user.getId();
@@ -78,7 +79,7 @@ class DatabaseServies {
             statement.setString(3, password);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-                     user = new UserDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7));
+                     user = new UserDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getString(8));
             }
         }
         catch (SQLException throwables) {

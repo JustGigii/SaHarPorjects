@@ -42,8 +42,7 @@ namespace ClientCsharp
             boardcastView.Show();
             server.Send("GetAllUser@"+user.Id);
             PopUser();
-            StorageConfig storage = new StorageConfig("1", "!", "1", "1", "1");
-            string storagemess = new JavaScriptSerializer().Serialize(storage);
+         
 
 
         }

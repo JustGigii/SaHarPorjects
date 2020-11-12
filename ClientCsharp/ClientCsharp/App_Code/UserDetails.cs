@@ -15,11 +15,12 @@ namespace ClientCsharp.App_Code
         private string mail;
         private string password;
         private int mode;
+        private string picture;
 
         public UserDetails()
         {
         }
-        public UserDetails(int id, string fname, string lname, string userName, string mail, string password, int mode)
+        public UserDetails(int id, string fname, string lname, string userName, string mail, string password, int mode,string picture)
         {
             this.id = id;
             this.fname = fname;
@@ -28,6 +29,7 @@ namespace ClientCsharp.App_Code
             this.mail = mail;
             this.password = password;
             this.mode = mode;
+            this.picture = picture;
         }
 
         public int Id
@@ -49,5 +51,6 @@ namespace ClientCsharp.App_Code
         public string Mail { get => mail; set => mail = value; }
         public string Password { get => password; set => password = value; }
         public int Mode { get => mode; set => mode = value; }
+        public string Picture { get => picture; set => picture = value; }
     }
 }

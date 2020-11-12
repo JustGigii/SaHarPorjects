@@ -29,11 +29,14 @@
             <PasswordBox Height="23" HorizontalAlignment="Left" Margin="183,137,0,0" Name="passwordBox1" VerticalAlignment="Top" Width="222" />
             <!--For password-->
             <PasswordBox Height="23" HorizontalAlignment="Left" Margin="182,166,0,0" Name="passwordBoxConfirm" VerticalAlignment="Top" Width="222" />
-           
+
             <Button Content="Submit" Height="23" HorizontalAlignment="Left" Margin="183,204,0,0" Name="Submit" VerticalAlignment="Top" Width="70" Click="Submit_Click" />
             <Button Content="Reset" Height="23" HorizontalAlignment="Left" Margin="259,204,0,0" Name="Reset" VerticalAlignment="Top" Width="70" Click="Reset_Click" />
-            <Button Content="Cancel" Height="23" HorizontalAlignment="Right" Margin="0,204,60,0" Name="Cancel" VerticalAlignment="Top" Width="70" Click="Cancel_Click" />
-            <Button Content="Login" Height="23" HorizontalAlignment="Right" Margin="0,204,135,0" x:Name="Login" VerticalAlignment="Top" Width="70" Click="Login_Click" />
+            <Button Content="Cancel" Height="23" HorizontalAlignment="Right" Margin="0,237,313,0" Name="Cancel" VerticalAlignment="Top" Width="70" Click="Cancel_Click" />
+            <Button Content="Login" Height="22" HorizontalAlignment="Right" Margin="0,238,395,0" x:Name="Login" VerticalAlignment="Top" Width="70" Click="Login_Click" RenderTransformOrigin="-1.793,4.587" />
+            <Image x:Name="imagePorfile" HorizontalAlignment="Left" Margin="476,29,0,0" VerticalAlignment="Top" Width="150" Height="150" Source="https://firebasestorage.googleapis.com/v0/b/fir-project-50920.appspot.com/o/sharpoject%2Funknow.png?alt=media&amp;token=e19506fe-7ecf-4b80-b262-ce5d0132d2f3" />
+            <Button x:Name="UploudImage" Content="Uploud" HorizontalAlignment="Left" Margin="500,212,0,0" VerticalAlignment="Top" Width="82" Height="30" Click="UploudImage_Click"/>
+            <Label x:Name="labelerr" Content="" HorizontalAlignment="Left" Margin="476,182,0,0" VerticalAlignment="Top" Width="148"/>
         </Grid>
     </Grid>
 </Window>

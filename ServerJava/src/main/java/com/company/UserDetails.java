@@ -8,8 +8,9 @@ public class UserDetails {
     private String Mail;
     private String Password;
     private int Mode;
+    private String Picture;
 
-    public UserDetails( int Id,String Fname, String Lname, String UserName,String Mail, String Password,int Mode)
+    public UserDetails( int Id,String Fname, String Lname, String UserName,String Mail, String Password,int Mode,String Picture)
     {
         this.setId(Id);
         this.setFname(Fname);
@@ -18,6 +19,7 @@ public class UserDetails {
         this.setMail(Mail);
         this.setPassword(Password);
         this.setMode(Mode);
+        this.setPicture(Picture);
     }
 
     // Getter Methods
@@ -78,5 +80,13 @@ public class UserDetails {
 
     public void setMode(int Mode) {
         this.Mode = Mode;
+    }
+
+    public String getPicture() {
+        return Picture;
+    }
+
+    public void setPicture(String picture) {
+        Picture = picture;
     }
 }
